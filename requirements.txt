@@ -1,0 +1,4 @@
+Django
+asgiref
+daphne
+Pillow
