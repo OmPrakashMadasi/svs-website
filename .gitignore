@@ -1,0 +1,10 @@
+# Ignore specific files
+media/video/6641574-uhd_2160_4096_25fps.mp4
+media/video/beats-jewellery.mp4
+
+# Ignore all files in a directory
+media/video/*
+
+# Ignore all files with a specific extension
+*.log
+*.tmp

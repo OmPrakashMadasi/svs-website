@@ -1,0 +1,87 @@
+     {% extends 'base.html' %}
+
+       {% block content %}
+        <!-- Header-->
+     {% include 'mainheader.html' %}
+        <header class="py-1" style="background-color: #033F3D;">
+            <div class="container px-4  ">
+                <div class="text-center text-white">
+                    <h1 style="color: #aaaaaa"; class="display-4 fw-bolder">Please Enter the Details:-</h1>
+
+                </div>
+            </div>
+</header>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <br/><br/>
+
+                <!-- Nav tabs -->
+                <div class="container" style="margin-left: 0; padding-left: 0;">
+                    <div class="row">
+                        <div class="col-12">
+                            <ul class="nav nav-tabs" id="addressTabs" role="tablist" style="border-bottom: none;">
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link active"
+                                        id="billing-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#billing"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="billing"
+                                        aria-selected="true"
+                                        style="border-bottom: none; background-color: whitesmoke; border-radius: 10px; width: 100%; text-align: center;">
+                                        BILLING ADDRESS
+                                    </button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button
+                                        class="nav-link"
+                                        id="shipping-tab"
+                                        data-bs-toggle="tab"
+                                        data-bs-target="#shipping"
+                                        type="button"
+                                        role="tab"
+                                        aria-controls="shipping"
+                                        aria-selected="false"
+                                        style="border-bottom: none; background-color: whitesmoke; border-radius: 10px; width: 100%; text-align: center; margin-left: 10px;">
+                                        SHIPPING ADDRESS
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="billing" role="tabpanel" aria-labelledby="billing-tab">
+                        <br/><br/>
+                        <h2 style="color:#e0a165 ;"><strong>Billing Address</strong></h2>
+                        <br/>
+                        <form method="POST" action="{% url 'update_info' %}" style="width: 70%;">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-secondary">Update Profile</button>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="shipping-tab">
+                        <br/><br/>
+                        <h2><strong>Shipping Address</strong></h2>
+                        <br/>
+                        <form method="POST" action="{% url 'update_info' %}">
+                            {% csrf_token %}
+                            {{ shipping_form.as_p }}
+                            <button type="submit" class="btn">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+
+                <br/>
+                <a href="{% url 'update_password' %}" class="btn" style="background-color: skyblue;color: white;">Update Password</a>
+                <br/><br/>
+            </div>
+        </div>
+    </div>
+{% endblock %}
